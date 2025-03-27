@@ -13,12 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Task {
-  id        Int     @id @default(autoincrement())
-  descricao String
-  concluida Boolean @default(false)
+model Nota {
+  id            Int       @id @default(autoincrement())
+  titulo        String
+  conteudo      String
+  favorita      Boolean   @default(false)
+  criadaEm      DateTime  @default(now())
+  atualizadaEm  DateTime  @updatedAt
 
-  criadaEm DateTime @default(now())
-
-  @@map("tasks")
+  @@map("notas")
 }
+
